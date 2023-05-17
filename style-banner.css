@@ -1,0 +1,52 @@
+#gdpr-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  transition: transform 0.3s;
+  transform: translateY(0);
+  z-index: 9999;
+}
+
+#gdpr-bar.closed {
+  transform: translateY(100%);
+}
+
+.container {
+  margin: 0 auto;
+}
+
+button {
+  margin-left: 10px;
+  background-color: #1e4d9c;
+}
+
+#preferences-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#preferences-dialog .dialog-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+#preferences-dialog h3 {
+  margin-top: 0;
+}
