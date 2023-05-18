@@ -7,12 +7,14 @@ document.getElementById("preferences-btn").addEventListener("click", showPrefere
 function acceptCookies() {
   // Přijetí cookies - můžete zde provést další akce
   hideBanner();
+  disableGdprBar();
 }
 
 // Funkce pro odmítnutí cookies
 function rejectCookies() {
   // Odmítnutí cookies - můžete zde provést další akce
   hideBanner();
+  disableGdprBar();
 }
 
 // Funkce pro zobrazení předvoleb
@@ -32,8 +34,8 @@ function showPreferences() {
   
   document.body.appendChild(preferences);
   
-  // Posunutí lišty nahoru
-  document.getElementById("gdpr-bar").classList.add("closed");
+  // Posunutí lišty do viditelné oblasti
+  document.getElementById("gdpr-bar").classList.add("open");
 }
 
 // Funkce pro uložení předvoleb
@@ -56,6 +58,21 @@ function hideBanner() {
 function hidePreferences() {
   document.getElementById("preferences-dialog").remove();
   
-  // Posunutí lišty dolů
-  document.getElementById("gdpr-bar").classList.remove("closed");
+  // Posunutí lišty mimo obrazovku
+  document.getElementById("gdpr-bar").classList.remove("open");
 }
+
+// Funkce pro deaktivaci lišty GDPR
+function disableGdprBar() {
+  localStorage.setItem("gdprDisabled", "true");
+}
+
+// Funkce pro kontrolu stavu lišty GDPR
+function checkGdprBarStatus() {
+  if (localStorage.getItem("gdprDisabled") === "true") {
+    hideBanner();
+  }
+}
+
+// Kontrola stavu lišty GDPR při načtení stránky
+document.addEventListener("DOMContentLoaded", checkGdprBarStatus);
